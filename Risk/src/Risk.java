@@ -28,20 +28,22 @@ public class Risk {
                             white[1] = w2;
                             Arrays.sort(red, Collections.reverseOrder());
                             Arrays.sort(white, Collections.reverseOrder());
-                            if (white[0] < red [0]) {    //red wins first pair
-                                if (white[1] < red[1]) { //red wins second pair
-                                    redWin++;
-                                } else { //red and white both win 1
-                                    tie++;
+                            if ((white[0]>=white[1]) && (red[0]>=red[1]) && (red[1]>= red[2])) {
+                                if (white[0] < red[0]) {    //red wins first pair
+                                    if (white[1] < red[1]) { //red wins second pair
+                                        redWin++;
+                                    } else { //red and white both win 1
+                                        tie++;
+                                    }
+                                } else if (white[0] >= red[0]) { //white wins first pair
+                                    if (white[1] < red[1]) { //red wins second pair
+                                        tie++;
+                                    } else { // white wins second pair
+                                        whiteWin++;
+                                    }
                                 }
-                            } else if (white[0] >= red[0]) { //white wins first pair
-                                if (white[1] < red[1]) { //red wins second pair
-                                    tie++;
-                                } else { // white wins second pair
-                                    whiteWin++;
-                                }
+                                totalNumberOfOutcomes++;
                             }
-                            totalNumberOfOutcomes++;
                         }
                     }
                 }
